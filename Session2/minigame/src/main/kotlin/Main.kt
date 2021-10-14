@@ -29,7 +29,7 @@ fun challengeTwo(){
 fun diceRoll(){
     val dice = (1..6).shuffled().first()
 
-
+    println("you have rolled  $dice")
     val userAnswer = readLine()
 
     var acceptedAnswers = setOf<Int>()
@@ -41,15 +41,31 @@ fun diceRoll(){
     }
     if(acceptedAnswers.contains(dice)){
             println("You have safely made it into the water")
+        challengeTree()
         }else{
             println("You where too slow and you died because the musquitos sucked all your blood")
+            gameOver()
     }
-            println("you have rolled  $dice")
-}
 
+}
+fun challengeTree(){
+    println("When you dove into the water you lost your weapon, luckily for you you find a cave while swimming, " +
+            "in the cave you see chest with a brand new weapon, which weapon do you find?")
+    val userAnswer = readLine()
+    if(userAnswer == "wand"){
+        println("How are you going to use a wand when you don't know any magic, will you hit your enemies on their head with it?")
+        gameOver()
+    }else if(userAnswer == "sword" || userAnswer == "bow"){
+        println("You hear a low growl behind you and can use your $userAnswer just in time to defeat your enemy")
+        win()
+    }else{
+        println("There is only option and that is to use your weapon and flee")
+        challengeTwo()
+    }
+}
 fun win(){
     println("Congratz!")
-    challengeTwo()
+
 }
 
 fun gameOver(){
