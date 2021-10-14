@@ -63,6 +63,13 @@ fun challengeTree(){
         challengeTwo()
     }
 }
+fun challengeFour(){
+    println("Guess a number between 1-100")
+    val randomNum = (1..100).random()
+    val userAnswer = readLine()
+    var acceptedAnswers = setOf<Int>()
+
+}
 fun win(){
     println("Congratz!")
 
