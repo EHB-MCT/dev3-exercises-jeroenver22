@@ -1,5 +1,5 @@
 class Commedian(override val name: String): Person(name) {
-    override fun talk(){
+    override fun chat(){
         laugh()
     }
     fun laugh(){
