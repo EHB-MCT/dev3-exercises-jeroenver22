@@ -1,0 +1,74 @@
+1. What is the product with this number: S24_3856
+select * from products WHERE productCode = 'S24_3856'
+1956 porche 364A coupe
+
+
+2. What is the average product price?
+select AVG(buyPrice) from products
+54.395182
+3. How many products have "Ford" in the name?
+select COUNT(*) FROM products WHERE productName LIKE '%Ford%'
+15
+
+4. what is the most expensive product?
+select productName from products WHERE buyPrice= ( select max(buyPrice) from products)
+1962 LanciaA Delta 16V
+
+5. How many ships are in the products?
+select COUNT(*) from products WHERE productLine = 'ships'
+9
+
+
+6. How many orders were made by customer with nr 328?
+select COUNT(*) from orders WHERE customerNumber = 328
+3
+
+7. How many orders were made by customer Julie Young?
+SELECT COUNT(*), contactLastName AS contactFirstName FROM customers
+LEFT JOIN orders ON customers.customerNumber = orders.customerNumber
+WHERE contactLastName = "Young" AND contactFirstName = "Julie"
+
+//
+select COUNT(*) AS orders_by_julie from orders
+left join customers on customers.customerNumber = orders.customerNumber
+WHERE customers.contactFirstName = "Julie" AND customers.contactLastName = "Young"
+3
+
+8. How many customers from the USA have a credit limit of 0?
+SELECT COUNT(*) FROM customers WHERE creditLimit = '0' AND country = 'USA'
+1
+
+9. Who makes the biggest payment on average?
+SELECT customers.customerName, AVG(amount) as average, payments.amount FROM payments
+INNER JOIN customers ON payments.customerNumber = customers.customerNumber
+GROUP BY customers.customerNumber
+ORDER BY average DESC
+LIMIT 1
+
+Collectable Mini Designs Co.	80375.240000
+
+
+10. How much did William Brown pay in 2004?
+SELECT SUM(amount) FROM payments
+INNER JOIN customers ON payments.customerNumber = customers.customerNumber
+WHERE customers.contactFirstName = 'William' AND customers.contactLastName = 'Brown'
+
+38281.51
+
+11.Get a list of customer names and the name of their representative. Only include customers with a representative.
+SELECT customerName, lastName, firstName from customers
+INNER JOIN employees on customers.salesRepEmployeeNumber = employees.employeeNumber
+
+Mini Gifts Distributors Ltd.	Jennings	Leslie
+Mini Wheels Co.			Jennings	Leslie
+Technics Stores Inc.		Jennings	Leslie
+Corporate Gift Ideas Co.	Jennings	Leslie
+The Sharp Gifts Warehouse	Jennings	Leslie
+
+12.What office is customer The Sharp Gifts Warehouse tied to?
+SELECT offices.city, offices.country from customers
+INNER JOiN employees on employees.employeeNumber = customers.salesRepEmployeeNumber
+INNER JOIN offices on offices.officeCode = employees.officeCode
+WHERE customerName = 'The Sharp Gifts Warehouse'
+
+San Francisco	USA
