@@ -1,7 +1,7 @@
  class Duolingo {
-     var chosenlanguage: String = "English"
+     var chosenlanguage: String = "en"
      var selectedCount: Int = 5
-     constructor(chosenlanguage: String = "English",
+     constructor(chosenlanguage: String = "en",
                  selectedCount: Int = 5) {
          this.selectedCount = selectedCount
          this.chosenlanguage = chosenlanguage
@@ -25,9 +25,6 @@
      fun filterWords() {
          wordSet = words.filter { it.language == chosenlanguage }.toMutableSet()
      }
-
-
-
 
  fun play(){
      val selectedWords = wordSet.shuffled().take(5).toMutableSet()
