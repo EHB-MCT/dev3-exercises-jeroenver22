@@ -9,16 +9,16 @@
      }
 
     val words = setOf<Word>(
-        Word("wereld", "world", "Engels"),
-        Word("Zwemmen", "Swimming", "Engels"),
-        Word("lopen", "running", "Engels"),
-        Word("tijger", "tiger", "Engels"),
-        Word("onderzeeêr", "submarine","Engels"),
-        Word("warmte", "värm", "Zweeds"),
-        Word("zeehond", "täta", "zweeds"),
-        Word("Hallo", "Halla", "Zweeds"),
-        Word("autostrade", "motorväg", "Zweeds"),
-        Word("Kerstmis","Jul", "Zweeds")
+        EnglishWord("wereld", "world" ),
+        EnglishWord("Zwemmen", "Swimming" ),
+        EnglishWord("lopen", "running"),
+        EnglishWord("tijger", "tiger"),
+        EnglishWord("onderzeeêr", "submarine"),
+        SwedishWord("warmte", "värm"),
+        SwedishWord("zeehond", "täta"),
+        SwedishWord("Hallo", "Halla"),
+        SwedishWord("autostrade", "motorväg"),
+        SwedishWord("Kerstmis","Jul")
 
     )
      var wordSet = mutableSetOf<Word>()
