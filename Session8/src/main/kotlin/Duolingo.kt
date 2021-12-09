@@ -1,35 +1,17 @@
  class Duolingo {
-     var chosenlanguage: String = "Zweeds"
-     var selectedCount: Int = 5
 
+     var selectedCount: Int = 5
+    var words: WordDeck = wordDeck()
      constructor(chosenlanguage: String = "Zweeds",
                  selectedCount: Int = 5) {
          this.selectedCount = selectedCount
-         this.chosenlanguage = chosenlanguage
-         if(chosenlanguage == chosenlanguage){
-             filterWords()
-         }else{
-             throw Exception("Please choose a valid language")
-         }
      }
 
-    val words = setOf<Word>(
-        EnglishWord("wereld", "world" ),
-        EnglishWord("Zwemmen", "Swimming" ),
-        EnglishWord("lopen", "running"),
-        EnglishWord("tijger", "tiger"),
-        EnglishWord("onderzeeêr", "submarine"),
-        SwedishWord("warmte", "värm"),
-        SwedishWord("zeehond", "täta"),
-        SwedishWord("Hallo", "Halla"),
-        SwedishWord("autostrade", "motorväg"),
-        SwedishWord("Kerstmis","Jul")
-
-    )
+     var wordDeck = WordDeck()
      var wordSet = mutableSetOf<Word>()
-     fun filterWords() {
-         wordSet = words.filter { it.language == chosenlanguage }.toMutableSet()
-     }
+   //  fun filterWords() {
+     //    wordSet = wordDeck.words.filter { it.language == chosenlanguage }.toMutableSet()
+    // }
 
  fun play(){
      val selectedWords = wordSet.shuffled().take(5).toMutableSet()
