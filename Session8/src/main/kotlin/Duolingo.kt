@@ -1,6 +1,7 @@
  class Duolingo {
      var chosenlanguage: String = "Zweeds"
      var selectedCount: Int = 5
+
      constructor(chosenlanguage: String = "Zweeds",
                  selectedCount: Int = 5) {
          this.selectedCount = selectedCount
@@ -39,9 +40,18 @@
          val userAnswer = readLine()
 
          if(selectedWord.translated == userAnswer){
+
+             selectedWord.difficultylvl -= 1
+             if(selectedWord.difficultylvl < 1){
+                 selectedWord.difficultylvl = 1
+             }
              selectedWords.remove(selectedWord)
+             println("The difficulty of the word went down by one, difficulty lvl is " + selectedWord.difficultylvl)
+
          }else{
+             selectedWord.difficultylvl += 2
              println("The selected word was " + selectedWord.translated)
+             println("The difficulty of the word changed to " + selectedWord.difficultylvl)
          }
          println("You still have " + selectedWords.count() +" to guess")
 
